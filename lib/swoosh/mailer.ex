@@ -129,6 +129,8 @@ defmodule Swoosh.Mailer do
       def deliver(email, config) do
         metadata = %{email: email, config: config}
 
+        IO.inspect(email, label: :"MAILER_LAURA_IS_HERE")
+        IO.inspect(config, label: :"MAILER_LAURA_IS_HERE")
         instrument(:deliver, metadata, fn ->
           Mailer.deliver(email, parse_config(config))
         end)
