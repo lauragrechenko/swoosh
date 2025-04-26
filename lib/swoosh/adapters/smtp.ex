@@ -54,6 +54,9 @@ defmodule Swoosh.Adapters.SMTP do
     recipients = all_recipients(email)
     body = Helpers.body(email, config)
 
+    IO.inspect(config, label: "SMPT_LAURA_IS_HERE")
+    IO.inspect(gen_smtp_config(config), label: "SMPT_LAURA_IS_HERE")
+
     case :gen_smtp_client.send_blocking(
            {sender, recipients, body},
            gen_smtp_config(config)
